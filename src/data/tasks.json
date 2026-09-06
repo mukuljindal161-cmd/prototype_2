@@ -1,0 +1,112 @@
+[
+  {
+    "id": "TSK-101",
+    "department": "Engineering",
+    "section": "Section A-B",
+    "taskType": "Track Joint Weld & Ultrasonic Rail Testing",
+    "criticality": "Critical",
+    "urgency": "Immediate",
+    "durationMinutes": 90,
+    "status": "Pending",
+    "description": "Critical ultrasound flaw detected near KM 42/12 on Section A-B. Requires track possession for thermit welding repair."
+  },
+  {
+    "id": "TSK-102",
+    "department": "OHE/Traction",
+    "section": "Section A-B",
+    "taskType": "Catenary Cantilever & Contact Wire Inspection",
+    "criticality": "Medium",
+    "urgency": "Routine",
+    "durationMinutes": 60,
+    "status": "Pending",
+    "description": "Routine monthly physical inspection of overhead contact wire and dropper alignment on Section A-B."
+  },
+  {
+    "id": "TSK-103",
+    "department": "S&T",
+    "section": "Section A-B",
+    "taskType": "Point Machine 104B Overhaul & Lubrication",
+    "criticality": "High",
+    "urgency": "High",
+    "durationMinutes": 45,
+    "status": "Pending",
+    "description": "Point machine motor contact cleaning and detection slide adjustment at Junction A."
+  },
+  {
+    "id": "TSK-104",
+    "department": "Engineering",
+    "section": "Section B-C",
+    "taskType": "Switch Rail Tongue Renewal",
+    "criticality": "High",
+    "urgency": "Immediate",
+    "durationMinutes": 110,
+    "status": "Pending",
+    "description": "Wear limit reached on switch tongue rail at turnout 201 on Section B-C. Safety replacement required."
+  },
+  {
+    "id": "TSK-105",
+    "department": "S&T",
+    "section": "Section B-C",
+    "taskType": "Digital Axle Counter Head Sensor Realignment",
+    "criticality": "Medium",
+    "urgency": "Routine",
+    "durationMinutes": 50,
+    "status": "Pending",
+    "description": "Axle counter sensor coil impedance check and recalibration following heavy ballast movement."
+  },
+  {
+    "id": "TSK-106",
+    "department": "Engineering",
+    "section": "Section A-B",
+    "taskType": "Mechanized Deep Screening & Ballast Cleaning",
+    "criticality": "Low",
+    "urgency": "Deferrable",
+    "durationMinutes": 300,
+    "status": "Pending",
+    "description": "Deep screening of track bed to remove pulverized ballast over 1.2 KM. Exceeds standard block window (needs special corridor block)."
+  },
+  {
+    "id": "TSK-107",
+    "department": "OHE/Traction",
+    "section": "Section B-C",
+    "taskType": "Traction Substation Isolator Maintenance",
+    "criticality": "Critical",
+    "urgency": "Immediate",
+    "durationMinutes": 80,
+    "status": "Pending",
+    "description": "Thermal hotspot detected on 25kV feeding post isolator switch on Section B-C. Urgent power block needed."
+  },
+  {
+    "id": "TSK-108",
+    "department": "Engineering",
+    "section": "Section B-C",
+    "taskType": "Curve Gauge & Cross-Level Tamping",
+    "criticality": "Medium",
+    "urgency": "Routine",
+    "durationMinutes": 75,
+    "status": "Pending",
+    "description": "Hydraulic tamping of transition curve KM 68/4 to 69/2 to rectify minor alignment deviations."
+  },
+  {
+    "id": "TSK-109",
+    "department": "S&T",
+    "section": "Section A-B",
+    "taskType": "Multi-Aspect Color Light Signal Lamp Retrofit",
+    "criticality": "Low",
+    "urgency": "Deferrable",
+    "durationMinutes": 40,
+    "status": "Pending",
+    "description": "Upgrading incandescent signal aspect lamps to fail-safe LED cluster modules on Section A-B."
+  },
+  {
+    "id": "TSK-110",
+    "department": "OHE/Traction",
+    "section": "Section A-B",
+    "taskType": "Tree Trimming Near 25kV Live Wire",
+    "criticality": "High",
+    "urgency": "High",
+    "durationMinutes": 50,
+    "status": "Pending",
+    "description": "Trimming hazardous boughs encroaching within 2-meter electrical clearance envelope on Section A-B."
+  }
+]
