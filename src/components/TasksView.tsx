@@ -176,7 +176,7 @@ export const TasksView: React.FC<TasksViewProps> = ({ tasks, onSelectTask }) => 
                     </td>
                     <td style={{ whiteSpace: 'nowrap' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap' }}>
-                        <span style={{ fontWeight: 700, fontVariantNumeric: 'tabular-nums', color: priority >= 75 ? '#f87171' : priority >= 50 ? '#fbbf24' : '#38bdf8' }}>
+                        <span style={{ fontWeight: 700, fontVariantNumeric: 'tabular-nums', color: priority >= 75 ? 'var(--status-crimson)' : priority >= 50 ? 'var(--status-amber)' : 'var(--accent-blue)' }}>
                           {priority}
                         </span>
                         <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>/100</span>
@@ -240,7 +240,7 @@ export const TasksView: React.FC<TasksViewProps> = ({ tasks, onSelectTask }) => 
                   </div>
                   <div className="mobile-detail-item">
                     <span className="detail-label">{t('tasks.colPriorityScore')}:</span>
-                    <span className="detail-val" style={{ fontWeight: 700, color: priority >= 75 ? '#f87171' : priority >= 50 ? '#fbbf24' : '#38bdf8' }}>
+                    <span className="detail-val" style={{ fontWeight: 700, color: priority >= 75 ? 'var(--status-crimson)' : priority >= 50 ? 'var(--status-amber)' : 'var(--accent-blue)' }}>
                       {priority}/100
                     </span>
                   </div>

@@ -152,6 +152,11 @@ export interface TranslationDictionary {
     colActions: string;
     actionClear: string;
     resetScheduleBtn: string;
+    noBlocksScheduled: string;
+    onSection: string;
+    noEventsMatch: string;
+    conflictOverlapTooltip: string;
+    clickToInspect: string;
   };
   modal: {
     title: string;
@@ -189,6 +194,9 @@ export interface TranslationDictionary {
     taskTypes: Record<string, string>;
     taskDescriptions: Record<string, string>;
     blockDescriptions: Record<string, string>;
+    blockTypes: Record<string, string>;
+    corridorLines: Record<string, string>;
+    officerNotes: Record<string, string>;
   };
 }
 
@@ -347,7 +355,12 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
       colOfficerNotes: 'OFFICER NOTES',
       colActions: 'ACTIONS',
       actionClear: 'Clear',
-      resetScheduleBtn: 'Reset Corridor Schedule'
+      resetScheduleBtn: 'Reset Corridor Schedule',
+      noBlocksScheduled: 'No blocks scheduled yet. Go to "AI Recommendation" and click "Approve Block Plan" to commit entries.',
+      onSection: 'on',
+      noEventsMatch: 'No events matching filter',
+      conflictOverlapTooltip: 'Timetable conflict overlap window',
+      clickToInspect: 'Click to inspect'
     },
     modal: {
       title: 'Modify Block Allocation',
@@ -404,17 +417,31 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
       },
       trainTypes: {
         'Superfast Express': 'Superfast Express',
-        'Passenger': 'Passenger',
+        'Passenger': 'Passenger Train',
         'Freight': 'Freight Container'
       },
       trainNames: {
+        'Northern Rajdhani Link Express': 'Northern Rajdhani Link Express',
+        'Intercity Passenger': 'Intercity Passenger',
+        'Corridor Superfast Express': 'Corridor Superfast Express',
+        'Container Freight Rake': 'Container Freight Rake',
+        'Night Express': 'Night Express',
         'Rajdhani Corridor Superfast': 'Rajdhani Corridor Superfast',
         'Southern Commuter Passenger': 'Southern Commuter Passenger',
-        'Corridor Superfast Express': 'Corridor Superfast Express',
         'Heavy Haul Container Freight': 'Heavy Haul Container Freight',
         'Intercity Express': 'Intercity Express'
       },
       taskTypes: {
+        'Track Joint Weld & Ultrasonic Rail Testing': 'Track Joint Weld & Ultrasonic Rail Testing',
+        'Catenary Cantilever & Contact Wire Inspection': 'Catenary Cantilever & Contact Wire Inspection',
+        'Point Machine 104B Overhaul & Lubrication': 'Point Machine 104B Overhaul & Lubrication',
+        'Switch Rail Tongue Renewal': 'Switch Rail Tongue Renewal',
+        'Digital Axle Counter Head Sensor Realignment': 'Digital Axle Counter Head Sensor Realignment',
+        'Mechanized Deep Screening & Ballast Cleaning': 'Mechanized Deep Screening & Ballast Cleaning',
+        'Traction Substation Isolator Maintenance': 'Traction Substation Isolator Maintenance',
+        'Curve Gauge & Cross-Level Tamping': 'Curve Gauge & Cross-Level Tamping',
+        'Multi-Aspect Color Light Signal Lamp Retrofit': 'Multi-Aspect Color Light Signal Lamp Retrofit',
+        'Tree Trimming Near 25kV Live Wire': 'Tree Trimming Near 25kV Live Wire',
         'Track Ultrasound Testing (USFD)': 'Track Ultrasound Testing (USFD)',
         'Switch Rail & Crossing Replacement': 'Switch Rail & Crossing Replacement',
         'Turnout Deep Screening & Ballast Packing': 'Turnout Deep Screening & Ballast Packing',
@@ -424,6 +451,16 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
         'Substation Neutral Section Insulator Replacement': 'Substation Neutral Section Insulator Replacement'
       },
       taskDescriptions: {
+        'Critical ultrasound flaw detected near KM 42/12 on Section A-B. Requires track possession for thermit welding repair.': 'Critical ultrasound flaw detected near KM 42/12 on Section A-B. Requires track possession for thermit welding repair.',
+        'Routine monthly physical inspection of overhead contact wire and dropper alignment on Section A-B.': 'Routine monthly physical inspection of overhead contact wire and dropper alignment on Section A-B.',
+        'Point machine motor contact cleaning and detection slide adjustment at Junction A.': 'Point machine motor contact cleaning and detection slide adjustment at Junction A.',
+        'Wear limit reached on switch tongue rail at turnout 201 on Section B-C. Safety replacement required.': 'Wear limit reached on switch tongue rail at turnout 201 on Section B-C. Safety replacement required.',
+        'Axle counter sensor coil impedance check and recalibration following heavy ballast movement.': 'Axle counter sensor coil impedance check and recalibration following heavy ballast movement.',
+        'Deep screening of track bed to remove pulverized ballast over 1.2 KM. Exceeds standard block window (needs special corridor block).': 'Deep screening of track bed to remove pulverized ballast over 1.2 KM. Exceeds standard block window (needs special corridor block).',
+        'Thermal hotspot detected on 25kV feeding post isolator switch on Section B-C. Urgent power block needed.': 'Thermal hotspot detected on 25kV feeding post isolator switch on Section B-C. Urgent power block needed.',
+        'Hydraulic tamping of transition curve KM 68/4 to 69/2 to rectify minor alignment deviations.': 'Hydraulic tamping of transition curve KM 68/4 to 69/2 to rectify minor alignment deviations.',
+        'Upgrading incandescent signal aspect lamps to fail-safe LED cluster modules on Section A-B.': 'Upgrading incandescent signal aspect lamps to fail-safe LED cluster modules on Section A-B.',
+        'Trimming hazardous boughs encroaching within 2-meter electrical clearance envelope on Section A-B.': 'Trimming hazardous boughs encroaching within 2-meter electrical clearance envelope on Section A-B.',
         'Ultrasonic flaw detection across 12km continuous welded rail. Speed reduction active.': 'Ultrasonic flaw detection across 12km continuous welded rail. Speed reduction active.',
         'Worn tongue rail at Turnout #42 requires complete replacement and realignment.': 'Worn tongue rail at Turnout #42 requires complete replacement and realignment.',
         'Heavy ballast contamination on Southern freight approach track. Tamping machine required.': 'Heavy ballast contamination on Southern freight approach track. Tamping machine required.',
@@ -433,11 +470,32 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
         'Preventative replacement of ceramic insulator assembly near km post 142/8.': 'Preventative replacement of ceramic insulator assembly near km post 142/8.'
       },
       blockDescriptions: {
+        'Standard morning maintenance corridor between peak commuter services.': 'Standard morning maintenance corridor between peak commuter services.',
+        'Mid-afternoon window suitable for joint Engineering and OHE multi-department operations.': 'Mid-afternoon window suitable for joint Engineering and OHE multi-department operations.',
+        'Afternoon corridor on Section B-C. Notice: Scheduled timetable train passage in vicinity.': 'Afternoon corridor on Section B-C. Notice: Scheduled timetable train passage in vicinity.',
+        'Clear morning slot between freight dispatch and midday passenger departures.': 'Clear morning slot between freight dispatch and midday passenger departures.',
+        'High-capacity night maintenance window with minimal passenger service impact.': 'High-capacity night maintenance window with minimal passenger service impact.',
         'Morning civil & traction routine maintenance window': 'Morning civil & traction routine maintenance window',
         'Afternoon secondary window on Northern Line': 'Afternoon secondary window on Northern Line',
         'Routine afternoon window overlapping Express timetable': 'Routine afternoon window overlapping Express timetable',
         'Late morning maintenance slot': 'Late morning maintenance slot',
         'Night-time heavy freight & infrastructure window': 'Night-time heavy freight & infrastructure window'
+      },
+      blockTypes: {
+        'Routine Maintenance Window': 'Routine Maintenance Window',
+        'Shadow Block Window': 'Shadow Block Window',
+        'Heavy Track Window': 'Heavy Track Window',
+        'Night Traffic Window': 'Night Traffic Window'
+      },
+      corridorLines: {
+        'Northern Line Corridor': 'Northern Line Corridor',
+        'Southern Line Corridor': 'Southern Line Corridor'
+      },
+      officerNotes: {
+        'Proposed joint track welding and catenary inspection under single coordinated block.': 'Proposed joint track welding and catenary inspection under single coordinated block.',
+        'AI Recommendation approved by officer. Coordinated multi-department block.': 'AI Recommendation approved by officer. Coordinated multi-department block.',
+        'AI Recommendation approved by officer. Single-department possession.': 'AI Recommendation approved by officer. Single-department possession.',
+        'Officer customized block parameters before commit.': 'Officer customized block parameters before commit.'
       }
     }
   },
@@ -596,7 +654,12 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
       colOfficerNotes: 'अधिकारी टिप्पणी',
       colActions: 'कार्रवाई',
       actionClear: 'साफ़ करें',
-      resetScheduleBtn: 'प्रोटोटाइप शेड्यूल रीसेट करें'
+      resetScheduleBtn: 'प्रोटोटाइप शेड्यूल रीसेट करें',
+      noBlocksScheduled: 'अभी कोई ब्लॉक निर्धारित नहीं है। प्रविष्टियां जोड़ने के लिए "एआई अनुशंसा" पर जाएं और "ब्लॉक योजना स्वीकृत करें" पर क्लिक करें।',
+      onSection: 'पर',
+      noEventsMatch: 'फ़िल्टर से मेल खाने वाला कोई ईवेंट नहीं',
+      conflictOverlapTooltip: 'समय सारणी संघर्ष ओवरलैप विंडो',
+      clickToInspect: 'निरीक्षण के लिए क्लिक करें'
     },
     modal: {
       title: 'ब्लॉक आवंटन संशोधित करें',
@@ -653,17 +716,31 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
       },
       trainTypes: {
         'Superfast Express': 'सुपरफास्ट एक्सप्रेस',
-        'Passenger': 'पैसेंजर',
+        'Passenger': 'पैसेंजर ट्रेन',
         'Freight': 'कंटेनर मालगाड़ी'
       },
       trainNames: {
+        'Northern Rajdhani Link Express': 'उत्तरी राजधानी लिंक एक्सप्रेस',
+        'Intercity Passenger': 'इंटरसिटी पैसेंजर',
+        'Corridor Superfast Express': 'कॉरिडोर सुपरफास्ट एक्सप्रेस',
+        'Container Freight Rake': 'कंटेनर मालगाड़ी रैक',
+        'Night Express': 'नाइट एक्सप्रेस',
         'Rajdhani Corridor Superfast': 'राजधानी कॉरिडोर सुपरफास्ट',
         'Southern Commuter Passenger': 'दक्षिणी कम्यूटर पैसेंजर',
-        'Corridor Superfast Express': 'कॉरिडोर सुपरफास्ट एक्सप्रेस',
         'Heavy Haul Container Freight': 'हैवी हॉल कंटेनर मालगाड़ी',
         'Intercity Express': 'इंटरसिटी एक्सप्रेस'
       },
       taskTypes: {
+        'Track Joint Weld & Ultrasonic Rail Testing': 'ट्रैक जॉइंट वेल्डिंग एवं अल्ट्रासोनिक रेल परीक्षण',
+        'Catenary Cantilever & Contact Wire Inspection': 'कैटेनरी कैंटिलीवर एवं संपर्क तार निरीक्षण',
+        'Point Machine 104B Overhaul & Lubrication': 'पॉइंट मशीन 104B ओवरहाल एवं स्नेहन',
+        'Switch Rail Tongue Renewal': 'स्विच रेल टंग नवीनीकरण',
+        'Digital Axle Counter Head Sensor Realignment': 'डिजिटल एक्सल काउंटर हेड सेंसर पुनर्रेखण',
+        'Mechanized Deep Screening & Ballast Cleaning': 'मशीनीकृत डीप स्क्रीनिंग एवं गिट्टी सफाई',
+        'Traction Substation Isolator Maintenance': 'कर्षण सबस्टेशन आइसोलेटर रखरखाव',
+        'Curve Gauge & Cross-Level Tamping': 'कर्व गेज एवं क्रॉस-लेवल टैंपिंग',
+        'Multi-Aspect Color Light Signal Lamp Retrofit': 'मल्टी-एस्पेक्ट कलर लाइट सिग्नल लैंप नवीनीकरण',
+        'Tree Trimming Near 25kV Live Wire': '25kV लाइव वायर के निकट वृक्ष छंटाई',
         'Track Ultrasound Testing (USFD)': 'ट्रैक अल्ट्रासाउंड परीक्षण (USFD)',
         'Switch Rail & Crossing Replacement': 'स्विच रेल एवं क्रॉसिंग प्रतिस्थापन',
         'Turnout Deep Screening & Ballast Packing': 'टर्नआउट डीप स्क्रीनिंग एवं गिट्टी पैकिंग',
@@ -673,6 +750,16 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
         'Substation Neutral Section Insulator Replacement': 'सबस्टेशन न्यूट्रल सेक्शन इन्सुलेटर प्रतिस्थापन'
       },
       taskDescriptions: {
+        'Critical ultrasound flaw detected near KM 42/12 on Section A-B. Requires track possession for thermit welding repair.': 'सेक्शन A-B पर किमी 42/12 के निकट गंभीर अल्ट्रासाउंड दोष पाया गया। थर्मिट वेल्डिंग मरम्मत हेतु ट्रैक पजेशन आवश्यक।',
+        'Routine monthly physical inspection of overhead contact wire and dropper alignment on Section A-B.': 'सेक्शन A-B पर ओवरहेड संपर्क तार और ड्रॉपर संरेखण का नियमित मासिक भौतिक निरीक्षण।',
+        'Point machine motor contact cleaning and detection slide adjustment at Junction A.': 'जंक्शन A पर पॉइंट मशीन मोटर कॉन्टैक्ट सफाई और डिटेक्शन स्लाइड समायोजन।',
+        'Wear limit reached on switch tongue rail at turnout 201 on Section B-C. Safety replacement required.': 'सेक्शन B-C पर टर्नआउट 201 पर स्विच टंग रेल घिसाव सीमा पर पहुंची। सुरक्षा प्रतिस्थापन आवश्यक।',
+        'Axle counter sensor coil impedance check and recalibration following heavy ballast movement.': 'भारी गिट्टी संचलन के पश्चात एक्सल काउंटर सेंसर कॉइल प्रतिबाधा जांच और पुनरंशांकन।',
+        'Deep screening of track bed to remove pulverized ballast over 1.2 KM. Exceeds standard block window (needs special corridor block).': '1.2 किमी से अधिक दूरी में चूर्णित गिट्टी हटाने के लिए ट्रैक बेड की गहरी स्क्रीनिंग। विशेष कॉरिडोर ब्लॉक आवश्यक।',
+        'Thermal hotspot detected on 25kV feeding post isolator switch on Section B-C. Urgent power block needed.': 'सेक्शन B-C पर 25kV फीडिंग पोस्ट आइसोलेटर स्विच पर थर्मल हॉटस्पॉट का पता चला। तत्काल पावर ब्लॉक आवश्यक।',
+        'Hydraulic tamping of transition curve KM 68/4 to 69/2 to rectify minor alignment deviations.': 'मामूली संरेखण विचलन को ठीक करने के लिए संक्रमण वक्र किमी 68/4 से 69/2 की हाइड्रोलिक टैंपिंग।',
+        'Upgrading incandescent signal aspect lamps to fail-safe LED cluster modules on Section A-B.': 'सेक्शन A-B पर तापदीप्त सिग्नल लैंप को फेल-सेफ एलईडी क्लस्टर मॉड्यूल में अपग्रेड करना।',
+        'Trimming hazardous boughs encroaching within 2-meter electrical clearance envelope on Section A-B.': 'सेक्शन A-B पर 2-मीटर विद्युत निकासी सीमा के भीतर आने वाली खतरनाक शाखाओं की छंटाई।',
         'Ultrasonic flaw detection across 12km continuous welded rail. Speed reduction active.': '12 किमी वेल्डेड रेल में अल्ट्रासोनिक दोष का पता लगाना। गति प्रतिबंध लागू।',
         'Worn tongue rail at Turnout #42 requires complete replacement and realignment.': 'टर्नआउट #42 पर घिसी हुई टंग रेल का पूर्ण प्रतिस्थापन एवं पुनर्रेखण आवश्यक है।',
         'Heavy ballast contamination on Southern freight approach track. Tamping machine required.': 'दक्षिणी मालगाड़ी पहुंच ट्रैक पर अत्यधिक गिट्टी प्रदूषण। टैंपिंग मशीन आवश्यक।',
@@ -682,11 +769,32 @@ export const translations: { en: TranslationDictionary; hi: TranslationDictionar
         'Preventative replacement of ceramic insulator assembly near km post 142/8.': 'किमी पोस्ट 142/8 के निकट सिरेमिक इन्सुलेटर असेंबली का निवारक प्रतिस्थापन।'
       },
       blockDescriptions: {
+        'Standard morning maintenance corridor between peak commuter services.': 'पीक कम्यूटर सेवाओं के बीच सुबह का मानक रखरखाव गलियारा।',
+        'Mid-afternoon window suitable for joint Engineering and OHE multi-department operations.': 'संयुक्त इंजीनियरिंग और ओएचई बहु-विभागीय कार्यों के लिए उपयुक्त दोपहर की विंडो।',
+        'Afternoon corridor on Section B-C. Notice: Scheduled timetable train passage in vicinity.': 'सेक्शन B-C पर दोपहर का गलियारा। सूचना: निकट में निर्धारित समय सारणी ट्रेन आवागमन।',
+        'Clear morning slot between freight dispatch and midday passenger departures.': 'मालगाड़ी प्रेषण और दोपहर यात्री प्रस्थान के बीच स्पष्ट सुबह का स्लॉट।',
+        'High-capacity night maintenance window with minimal passenger service impact.': 'यात्री सेवा पर न्यूनतम प्रभाव वाली उच्च क्षमता रात्रि रखरखाव विंडो।',
         'Morning civil & traction routine maintenance window': 'प्रातःकालीन सिविल एवं कर्षण नियमित रखरखाव विंडो',
         'Afternoon secondary window on Northern Line': 'उत्तरी लाइन पर दोपहर की द्वितीयक विंडो',
         'Routine afternoon window overlapping Express timetable': 'नियमित दोपहर विंडो जो एक्सप्रेस समय सारणी को प्रभावित करती है',
         'Late morning maintenance slot': 'देर सुबह का रखरखाव स्लॉट',
         'Night-time heavy freight & infrastructure window': 'रात्रि-कालीन भारी मालगाड़ी एवं बुनियादी ढांचा विंडो'
+      },
+      blockTypes: {
+        'Routine Maintenance Window': 'नियमित रखरखाव विंडो',
+        'Shadow Block Window': 'शैडो ब्लॉक विंडो',
+        'Heavy Track Window': 'भारी ट्रैक कार्य विंडो',
+        'Night Traffic Window': 'रात्रि कालीन ट्रैक विंडो'
+      },
+      corridorLines: {
+        'Northern Line Corridor': 'उत्तरी लाइन कॉरिडोर',
+        'Southern Line Corridor': 'दक्षिणी लाइन कॉरिडोर'
+      },
+      officerNotes: {
+        'Proposed joint track welding and catenary inspection under single coordinated block.': 'एकल समन्वित ब्लॉक के तहत प्रस्तावित संयुक्त ट्रैक वेल्डिंग और कैटेनरी निरीक्षण।',
+        'AI Recommendation approved by officer. Coordinated multi-department block.': 'अधिकारी द्वारा एआई अनुशंसा स्वीकृत। समन्वित बहु-विभागीय ब्लॉक।',
+        'AI Recommendation approved by officer. Single-department possession.': 'अधिकारी द्वारा एआई अनुशंसा स्वीकृत। एकल-विभागीय ब्लॉक।',
+        'Officer customized block parameters before commit.': 'अधिकारी ने पुष्टि से पूर्व ब्लॉक मापदंडों को अनुकूलित किया।'
       }
     }
   }

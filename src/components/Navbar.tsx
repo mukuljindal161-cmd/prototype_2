@@ -4,7 +4,6 @@ import {
   ListTodo,
   Sparkles,
   CalendarClock,
-  ShieldCheck,
   Sun,
   Moon,
   Languages
@@ -35,15 +34,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header className="occ-nav">
-        {/* Brand Title: "RailOpt" */}
-        <div className="brand-badge">
-          <div className="brand-icon">
-            <ShieldCheck size={22} />
-          </div>
-          <div>
-            <div className="brand-title">{t('common.brandName')}</div>
-            <div className="brand-sub">{t('common.brandSub')}</div>
-          </div>
+        {/* Brand Logo */}
+        <div
+          className="brand-badge"
+          onClick={() => setActiveTab('dashboard')}
+          role="button"
+          tabIndex={0}
+          style={{ cursor: 'pointer' }}
+          title="RailOpt"
+        >
+          <img src="/logo.png" alt="RailOpt Logo" className="brand-logo-img" />
         </div>
 
         {/* Desktop Main Nav Tabs (hidden on mobile <= 768px) */}
@@ -103,67 +103,51 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </nav>
 
-        {/* Right Controls: Theme Toggle Bar, Language Switcher & Status Pill */}
+        {/* Right Controls: Language Switcher & Theme Toggle Bar */}
         <div className="nav-controls-right">
-        {conflictCount > 0 && (
-          <div className="badge badge-conflict occ-conflict-badge">
-            <span className="conflict-badge-full">⚠ {conflictCount} {t('nav.trainConflict')}</span>
-            <span className="conflict-badge-compact">⚠ {conflictCount} {t('nav.conflictShort')}</span>
-            <span className="conflict-badge-tiny">⚠ {conflictCount}</span>
+          {/* Language Switcher Bar */}
+          <div className="lang-toggle-bar" title="Switch Language / भाषा बदलें">
+            <button
+              type="button"
+              className={`lang-toggle-btn ${language === 'en' ? 'active' : ''}`}
+              onClick={() => setLanguage('en')}
+              aria-label="English"
+            >
+              <Languages size={13} />
+              <span>EN</span>
+            </button>
+            <button
+              type="button"
+              className={`lang-toggle-btn ${language === 'hi' ? 'active' : ''}`}
+              onClick={() => setLanguage('hi')}
+              aria-label="Hindi"
+            >
+              <span>हिंदी</span>
+            </button>
           </div>
-        )}
 
-        {/* Language Switcher Bar */}
-        <div className="lang-toggle-bar" title="Switch Language / भाषा बदलें">
-          <button
-            type="button"
-            className={`lang-toggle-btn ${language === 'en' ? 'active' : ''}`}
-            onClick={() => setLanguage('en')}
-            aria-label="English"
-          >
-            <Languages size={13} />
-            <span>EN</span>
-          </button>
-          <button
-            type="button"
-            className={`lang-toggle-btn ${language === 'hi' ? 'active' : ''}`}
-            onClick={() => setLanguage('hi')}
-            aria-label="Hindi"
-          >
-            <span>हिंदी</span>
-          </button>
+          {/* Light / Dark Theme Toggle Bar */}
+          <div className="theme-toggle-bar" title="Toggle Light / Dark Mode">
+            <button
+              type="button"
+              className={`theme-toggle-btn ${theme === 'light' ? 'active' : ''}`}
+              onClick={() => setTheme('light')}
+              aria-label="Light Theme"
+            >
+              <Sun size={14} />
+              <span className="theme-btn-label">{t('common.light')}</span>
+            </button>
+            <button
+              type="button"
+              className={`theme-toggle-btn ${theme === 'dark' ? 'active' : ''}`}
+              onClick={() => setTheme('dark')}
+              aria-label="Dark Theme"
+            >
+              <Moon size={14} />
+              <span className="theme-btn-label">{t('common.dark')}</span>
+            </button>
+          </div>
         </div>
-
-        {/* Light / Dark Theme Toggle Bar */}
-        <div className="theme-toggle-bar" title="Toggle Light / Dark Mode">
-          <button
-            type="button"
-            className={`theme-toggle-btn ${theme === 'light' ? 'active' : ''}`}
-            onClick={() => setTheme('light')}
-            aria-label="Light Theme"
-          >
-            <Sun size={14} />
-            <span className="theme-btn-label">{t('common.light')}</span>
-          </button>
-          <button
-            type="button"
-            className={`theme-toggle-btn ${theme === 'dark' ? 'active' : ''}`}
-            onClick={() => setTheme('dark')}
-            aria-label="Dark Theme"
-          >
-            <Moon size={14} />
-            <span className="theme-btn-label">{t('common.dark')}</span>
-          </button>
-        </div>
-
-        {/* Operational Status Pill */}
-        <div className="occ-status-pill">
-          <div className="pulse-dot" />
-          <span className="status-text-desktop">{t('common.activeGateOn')}</span>
-          <span className="status-text-mobile">{t('common.activeGateOnMobile')}</span>
-          <span className="status-text-tiny">{t('common.active')}</span>
-        </div>
-      </div>
     </header>
 
     {/* Mobile Bottom Navigation Bar (pinned to viewport bottom on mobile <= 768px) */}

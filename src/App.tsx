@@ -31,7 +31,7 @@ function AppContent() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     const saved = localStorage.getItem('railopt-theme');
-    return (saved === 'light' || saved === 'dark') ? saved : 'dark';
+    return saved === 'dark' ? 'dark' : 'light';
   });
 
   // Apply theme to document element
@@ -212,7 +212,7 @@ function AppContent() {
                 ? 'linear-gradient(135deg, #059669, #10b981)'
                 : toast.type === 'warning'
                 ? 'linear-gradient(135deg, #d97706, #f59e0b)'
-                : 'linear-gradient(135deg, #0284c7, #2563eb)',
+                : 'linear-gradient(135deg, #15803d, #16a34a)',
             animation: 'fadeIn 0.3s ease-out'
           }}
         >

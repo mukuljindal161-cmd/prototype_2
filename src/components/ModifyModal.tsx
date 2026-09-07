@@ -16,7 +16,7 @@ export const ModifyModal: React.FC<ModifyModalProps> = ({
   onClose,
   onSave
 }) => {
-  const { t, tSection } = useLanguage();
+  const { t, tSection, tBlockType } = useLanguage();
   if (!entry) return null;
 
   const [blockId, setBlockId] = useState(entry.blockId);
@@ -86,7 +86,7 @@ export const ModifyModal: React.FC<ModifyModalProps> = ({
                 .filter((b) => b.section === entry.section)
                 .map((b) => (
                   <option key={b.id} value={b.id}>
-                    {b.id} ({b.startTime} - {b.endTime}, {b.durationMinutes}m) - {b.blockType}
+                    {b.id} ({b.startTime} - {b.endTime}, {b.durationMinutes}{t('common.min')}) - {tBlockType(b.blockType)}
                   </option>
                 ))}
             </select>

@@ -30,7 +30,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
   onOpenModify,
   onResetToDefault
 }) => {
-  const { t, tDept, tSection, tTrainName, tTrainType } = useLanguage();
+  const { t, tDept, tSection, tTrainName, tTrainType, tBlockType, tCorridorLine, tNotes } = useLanguage();
   const [filterMode, setFilterMode] = useState<TimelineFilter>('all');
   
   const sections = [
@@ -117,7 +117,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
       <div className="timeline-container" style={{ marginBottom: '2.5rem' }}>
         <div className="timeline-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <Clock size={18} color="#38bdf8" />
+            <Clock size={18} color="var(--accent-cyan)" />
             <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>
               {t('schedule.title')}
             </h3>
@@ -159,7 +159,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             {/* Legend */}
             <div className="timeline-legend">
               <div className="legend-item">
-                <div className="legend-swatch" style={{ background: '#38bdf8' }} />
+                <div className="legend-swatch" style={{ background: '#16a34a' }} />
                 <span>{t('schedule.legendTrain')}</span>
               </div>
               <div className="legend-item">
@@ -209,7 +209,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                   <div className="timeline-section-header">
                     <div className="section-title-group">
                       <span className="section-name">{tSection(section.name)}</span>
-                      <span className="section-desc">• {section.line}</span>
+                      <span className="section-desc">• {tCorridorLine(section.line)}</span>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -235,7 +235,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                     <div className="timeline-lane-row">
                       <div className="lane-label-box">
                         <div className="lane-title">
-                          <TrainIcon size={14} color="#38bdf8" />
+                          <TrainIcon size={14} color="var(--accent-cyan)" />
                           <span>{t('schedule.laneTimetableTrains')}</span>
                         </div>
                         <div className="lane-sub">{t('schedule.laneScheduledMovements')}</div>
@@ -256,7 +256,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                           <div
                             className="conflict-hazard-zone"
                             style={{ left: `${conflictStart}%`, width: `${conflictWidth}%` }}
-                            title="Timetable conflict overlap window"
+                            title={t('schedule.conflictOverlapTooltip')}
                           />
                         )}
 
@@ -272,7 +272,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                               className={`timeline-pill train-pill ${isConflicted ? 'train-conflict-pulse' : ''}`}
                               style={style}
                               onClick={() => setSelectedItem({ type: 'train', data: train })}
-                              title={`${train.trainNumber}: ${train.name} (${train.startTime} - ${train.endTime}) [Click to inspect]`}
+                              title={`${train.trainNumber}: ${tTrainName(train.name)} (${train.startTime} - ${train.endTime}) [${t('schedule.clickToInspect')}]`}
                             >
                               <TrainIcon size={14} style={{ flexShrink: 0 }} />
                               <span style={{ fontWeight: 700, flexShrink: 0 }}>{train.trainNumber}</span>
@@ -317,7 +317,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                           <div
                             className="conflict-hazard-zone"
                             style={{ left: `${conflictStart}%`, width: `${conflictWidth}%` }}
-                            title="Timetable conflict overlap window"
+                            title={t('schedule.conflictOverlapTooltip')}
                           />
                         )}
 
@@ -333,7 +333,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                               className={`timeline-pill ${isConflicted ? 'block-conflict-pill' : 'block-clear-pill'}`}
                               style={style}
                               onClick={() => setSelectedItem({ type: 'block', data: block })}
-                              title={`Block ${block.id}: ${block.blockType} (${block.startTime} - ${block.endTime}, ${block.durationMinutes}m) [Click to inspect]`}
+                              title={`${t('schedule.inspectorBlockTitle')} ${block.id}: ${tBlockType(block.blockType)} (${block.startTime} - ${block.endTime}, ${block.durationMinutes}${t('common.min')})`}
                             >
                               <Wrench size={14} style={{ flexShrink: 0 }} />
                               <span style={{ fontWeight: 700, flexShrink: 0 }}>{block.id}</span>
@@ -405,7 +405,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                 <div className="timeline-section-header">
                   <div className="section-title-group">
                     <span className="section-name">{tSection(section.name)}</span>
-                    <span className="section-desc">• {section.line}</span>
+                    <span className="section-desc">• {tCorridorLine(section.line)}</span>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -449,7 +449,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                 <div className="mobile-slots-list">
                   {items.length === 0 ? (
                     <div style={{ padding: '1rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                      No events matching filter
+                      {t('schedule.noEventsMatch')}
                     </div>
                   ) : (
                     items.map((item) => {
@@ -466,7 +466,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                               <span className="slot-time-sub">{trn.endTime}</span>
                             </div>
                             <div className="slot-icon-col">
-                              <TrainIcon size={16} color="#38bdf8" />
+                              <TrainIcon size={16} color="var(--accent-cyan)" />
                             </div>
                             <div className="slot-info-col">
                               <div className="slot-title">
@@ -505,7 +505,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                                 <span className="slot-name">• {blk.durationMinutes} {t('common.min')}</span>
                               </div>
                               <div className="slot-sub">
-                                {blk.blockType}
+                                {tBlockType(blk.blockType)}
                               </div>
                             </div>
                             <span className={`badge ${item.isConflicted ? 'badge-conflict' : 'badge-clear'}`} style={{ fontSize: '0.68rem', flexShrink: 0 }}>
@@ -531,12 +531,12 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                   width: '42px',
                   height: '42px',
                   borderRadius: '10px',
-                  background: selectedItem.type === 'train' ? 'rgba(56, 189, 248, 0.15)' : 'rgba(16, 185, 129, 0.15)',
-                  border: `1px solid ${selectedItem.type === 'train' ? '#38bdf8' : '#10b981'}`,
+                  background: selectedItem.type === 'train' ? 'rgba(22, 163, 74, 0.15)' : 'rgba(16, 185, 129, 0.15)',
+                  border: `1px solid ${selectedItem.type === 'train' ? 'var(--accent-cyan)' : '#10b981'}`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: selectedItem.type === 'train' ? '#38bdf8' : '#10b981',
+                  color: selectedItem.type === 'train' ? 'var(--accent-cyan)' : '#10b981',
                   flexShrink: 0
                 }}
               >
@@ -561,11 +561,11 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                 <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
                   {selectedItem.type === 'train' ? (
                     <>
-                      <strong>{tTrainName((selectedItem.data as Train).name)}</strong> ({tTrainType((selectedItem.data as Train).trainType)}) • {t('schedule.labelWindow')} <strong>{(selectedItem.data as Train).startTime} – {(selectedItem.data as Train).endTime}</strong> on {tSection((selectedItem.data as Train).section)}
+                      <strong>{tTrainName((selectedItem.data as Train).name)}</strong> ({tTrainType((selectedItem.data as Train).trainType)}) • {t('schedule.labelWindow')} <strong>{(selectedItem.data as Train).startTime} – {(selectedItem.data as Train).endTime}</strong> {t('schedule.onSection')} {tSection((selectedItem.data as Train).section)}
                     </>
                   ) : (
                     <>
-                      <strong>{(selectedItem.data as AvailableBlock).blockType}</strong> • {t('schedule.labelWindow')} <strong>{(selectedItem.data as AvailableBlock).startTime} – {(selectedItem.data as AvailableBlock).endTime}</strong> ({(selectedItem.data as AvailableBlock).durationMinutes} {t('common.min')}) on {tSection((selectedItem.data as AvailableBlock).section)}
+                      <strong>{tBlockType((selectedItem.data as AvailableBlock).blockType)}</strong> • {t('schedule.labelWindow')} <strong>{(selectedItem.data as AvailableBlock).startTime} – {(selectedItem.data as AvailableBlock).endTime}</strong> ({(selectedItem.data as AvailableBlock).durationMinutes} {t('common.min')}) {t('schedule.onSection')} {tSection((selectedItem.data as AvailableBlock).section)}
                     </>
                   )}
                 </div>
@@ -575,7 +575,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             <button
               onClick={() => setSelectedItem(null)}
               style={{ color: 'var(--text-muted)', padding: '0.5rem' }}
-              title="Close inspector"
+              title={t('common.close')}
             >
               <X size={18} />
             </button>
@@ -618,7 +618,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
               {schedule.length === 0 ? (
                 <tr>
                   <td colSpan={10} style={{ textAlign: 'center', padding: '2.5rem', color: 'var(--text-muted)' }}>
-                    No blocks scheduled yet. Go to "AI Recommendation" and click "Approve Block Plan" to commit entries.
+                    {t('schedule.noBlocksScheduled')}
                   </td>
                 </tr>
               ) : (
@@ -663,7 +663,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                     </td>
                     <td style={{ whiteSpace: 'nowrap' }}>{getStatusBadge(entry.approvalStatus)}</td>
                     <td style={{ minWidth: '240px', maxWidth: '360px', fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.45 }}>
-                      {entry.officerNotes}
+                      {tNotes(entry.officerNotes)}
                     </td>
                     <td style={{ whiteSpace: 'nowrap' }}>
                       <button
@@ -686,7 +686,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
         <div className="mobile-schedule-cards">
           {schedule.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '1.5rem', color: 'var(--text-muted)', fontSize: '0.82rem' }}>
-              No blocks scheduled yet. Go to "AI Recommendation" and click "Approve Block Plan" to commit entries.
+              {t('schedule.noBlocksScheduled')}
             </div>
           ) : (
             schedule.map((entry) => (
@@ -740,7 +740,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                   {entry.officerNotes && (
                     <div className="mobile-detail-item" style={{ gridColumn: 'span 2' }}>
                       <span className="detail-label">{t('schedule.colOfficerNotes')}:</span>
-                      <span className="detail-val" style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>{entry.officerNotes}</span>
+                      <span className="detail-val" style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>{tNotes(entry.officerNotes)}</span>
                     </div>
                   )}
                 </div>

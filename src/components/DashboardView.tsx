@@ -64,45 +64,45 @@ export const DashboardView: React.FC<DashboardProps> = ({
         <div className="glass-panel kpi-card">
           <div className="kpi-title">
             <span>{t('dashboard.totalBacklog')}</span>
-            <ListTodo size={18} color="#38bdf8" />
+            <ListTodo size={18} color="var(--accent-blue)" />
           </div>
           <div className="kpi-value">{tasks.length}</div>
           <div className="kpi-meta">{t('dashboard.totalBacklogMeta')}</div>
         </div>
 
-        <div className="glass-panel kpi-card" style={{ '--accent-gradient': 'linear-gradient(90deg, #ef4444, transparent)' } as React.CSSProperties}>
+        <div className="glass-panel kpi-card">
           <div className="kpi-title">
             <span>{t('dashboard.highPriority')}</span>
-            <AlertTriangle size={18} color="#ef4444" />
+            <AlertTriangle size={18} color="var(--status-crimson)" />
           </div>
-          <div className="kpi-value" style={{ color: '#f87171' }}>{highPriorityCount}</div>
+          <div className="kpi-value" style={{ color: 'var(--status-crimson)' }}>{highPriorityCount}</div>
           <div className="kpi-meta">{t('dashboard.highPriorityMeta')}</div>
         </div>
 
-        <div className="glass-panel kpi-card" style={{ '--accent-gradient': 'linear-gradient(90deg, #10b981, transparent)' } as React.CSSProperties}>
+        <div className="glass-panel kpi-card">
           <div className="kpi-title">
             <span>{t('dashboard.availableBlocks')}</span>
-            <Clock size={18} color="#10b981" />
+            <Clock size={18} color="var(--status-emerald)" />
           </div>
-          <div className="kpi-value" style={{ color: '#34d399' }}>{blocks.length}</div>
+          <div className="kpi-value" style={{ color: 'var(--status-emerald)' }}>{blocks.length}</div>
           <div className="kpi-meta">{t('dashboard.availableBlocksMeta')}</div>
         </div>
 
-        <div className="glass-panel kpi-card" style={{ '--accent-gradient': 'linear-gradient(90deg, #f59e0b, transparent)' } as React.CSSProperties}>
+        <div className="glass-panel kpi-card">
           <div className="kpi-title">
             <span>{t('dashboard.detectedConflicts')}</span>
-            <AlertTriangle size={18} color="#f59e0b" />
+            <AlertTriangle size={18} color="var(--status-amber)" />
           </div>
-          <div className="kpi-value" style={{ color: '#fbbf24' }}>{conflictsCount}</div>
+          <div className="kpi-value" style={{ color: 'var(--status-amber)' }}>{conflictsCount}</div>
           <div className="kpi-meta">{t('dashboard.detectedConflictsMeta')}</div>
         </div>
 
-        <div className="glass-panel kpi-card" style={{ '--accent-gradient': 'linear-gradient(90deg, #6366f1, transparent)' } as React.CSSProperties}>
+        <div className="glass-panel kpi-card">
           <div className="kpi-title">
             <span>{t('dashboard.scheduledPlans')}</span>
-            <TrendingUp size={18} color="#818cf8" />
+            <TrendingUp size={18} color="var(--accent-indigo)" />
           </div>
-          <div className="kpi-value" style={{ color: '#a5b4fc' }}>{schedule.length}</div>
+          <div className="kpi-value" style={{ color: 'var(--accent-indigo)' }}>{schedule.length}</div>
           <div className="kpi-meta">{t('dashboard.scheduledPlansMeta')}</div>
         </div>
       </div>

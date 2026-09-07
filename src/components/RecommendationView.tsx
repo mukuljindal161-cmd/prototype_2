@@ -9,8 +9,7 @@ import {
   Check,
   Edit3,
   XCircle,
-  TrendingUp,
-  HelpCircle
+  TrendingUp
 } from 'lucide-react';
 import type { Recommendation, MaintenanceTask, AvailableBlock } from '../types';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -40,7 +39,7 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
     return (
       <div className="main-container">
         <div className="glass-panel" style={{ padding: '3rem', textAlign: 'center' }}>
-          <Sparkles size={40} color="#38bdf8" style={{ marginBottom: '1rem' }} />
+          <Sparkles size={40} color="var(--accent-cyan)" style={{ marginBottom: '1rem' }} />
           <h2 style={{ fontSize: '1.4rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
             {t('recommendation.noRecTitle')}
           </h2>
@@ -73,19 +72,27 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
           </p>
         </div>
 
-        {/* Quick Scenario Picker */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{t('recommendation.demoScenarios')}</span>
-          {allRecommendations.slice(0, 3).map((rec) => (
-            <button
-              key={rec.id}
-              className={`nav-item ${rec.id === recommendation.id ? 'active' : ''}`}
-              style={{ fontSize: '0.78rem', padding: '0.35rem 0.65rem' }}
-              onClick={() => onSelectRecommendation(rec)}
-            >
-              {rec.linkedTaskIds.join('+')}
-            </button>
-          ))}
+        {/* Quick Scenario Picker Dropdown */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+          <label htmlFor="scenario-select" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+            {t('recommendation.demoScenarios')}
+          </label>
+          <select
+            id="scenario-select"
+            className="form-select scenario-select"
+            value={recommendation.id}
+            onChange={(e) => {
+              const selected = allRecommendations.find((r) => r.id === e.target.value);
+              if (selected) onSelectRecommendation(selected);
+            }}
+            style={{ width: 'auto', minWidth: '200px', padding: '0.4rem 0.75rem', fontSize: '0.82rem', cursor: 'pointer' }}
+          >
+            {allRecommendations.map((rec) => (
+              <option key={rec.id} value={rec.id}>
+                {rec.id}: {rec.linkedTaskIds.join(' + ')} ({tSection(rec.section)})
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -143,7 +150,7 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
               <div>
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.04em' }}>{t('recommendation.metricCorridor')}</div>
                 <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.3rem' }}>
-                  <MapPin size={16} color="#38bdf8" />
+                  <MapPin size={16} color="var(--accent-cyan)" />
                   <span>{tSection(recommendation.section)}</span>
                 </div>
               </div>
@@ -205,7 +212,7 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
             {/* Natural Language Explanation Box */}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.6rem' }}>
-                <Sparkles size={16} color="#38bdf8" />
+                <Sparkles size={16} color="var(--accent-cyan)" />
                 <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                   {t('recommendation.rationaleTitle')}
                 </h3>
@@ -276,8 +283,7 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
               ))}
             </div>
 
-            <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-              <HelpCircle size={14} />
+            <div style={{ marginTop: '1rem', fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
               <span>{t('recommendation.approvalHelpNotice')}</span>
             </div>
           </div>

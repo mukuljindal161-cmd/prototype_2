@@ -17,6 +17,9 @@ interface LanguageContextType {
   tTaskType: (taskType: string) => string;
   tTaskDesc: (taskDesc: string) => string;
   tBlockDesc: (blockDesc?: string) => string;
+  tBlockType: (blockType: string) => string;
+  tCorridorLine: (line: string) => string;
+  tNotes: (notes?: string) => string;
   tExplanation: (rec: any) => string;
 }
 
@@ -114,6 +117,21 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return translations[language].domain.blockDescriptions[blockDesc] || blockDesc;
   };
 
+  const tBlockType = (blockType: string) => {
+    if (!blockType) return '';
+    return translations[language].domain.blockTypes[blockType] || blockType;
+  };
+
+  const tCorridorLine = (line: string) => {
+    if (!line) return '';
+    return translations[language].domain.corridorLines[line] || line;
+  };
+
+  const tNotes = (notes?: string) => {
+    if (!notes) return '';
+    return translations[language].domain.officerNotes[notes] || notes;
+  };
+
   const tExplanation = (rec: any) => {
     if (language === 'en') return rec.explanationText;
     const primary = rec.tasks && rec.tasks[0];
@@ -159,6 +177,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         tTaskType,
         tTaskDesc,
         tBlockDesc,
+        tBlockType,
+        tCorridorLine,
+        tNotes,
         tExplanation
       }}
     >
