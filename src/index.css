@@ -1254,6 +1254,7 @@ table.occ-table tr:hover td {
   user-select: none;
   transition: all 0.15s ease;
   white-space: nowrap;
+  overflow: hidden;
   box-sizing: border-box;
   z-index: 10;
 }
