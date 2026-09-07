@@ -30,13 +30,14 @@ function AppContent() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    const saved = localStorage.getItem('railopt-theme');
+    const saved = sessionStorage.getItem('railopt-theme');
     return saved === 'dark' ? 'dark' : 'light';
   });
 
   // Apply theme to document element
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    sessionStorage.setItem('railopt-theme', theme);
     localStorage.setItem('railopt-theme', theme);
   }, [theme]);
 

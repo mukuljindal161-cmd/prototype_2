@@ -126,27 +126,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Light / Dark Theme Toggle Bar */}
-          <div className="theme-toggle-bar" title="Toggle Light / Dark Mode">
-            <button
-              type="button"
-              className={`theme-toggle-btn ${theme === 'light' ? 'active' : ''}`}
-              onClick={() => setTheme('light')}
-              aria-label="Light Theme"
-            >
-              <Sun size={14} />
-              <span className="theme-btn-label">{t('common.light')}</span>
-            </button>
-            <button
-              type="button"
-              className={`theme-toggle-btn ${theme === 'dark' ? 'active' : ''}`}
-              onClick={() => setTheme('dark')}
-              aria-label="Dark Theme"
-            >
-              <Moon size={14} />
-              <span className="theme-btn-label">{t('common.dark')}</span>
-            </button>
-          </div>
+          {/* Single Theme Toggle Icon Button */}
+          <button
+            type="button"
+            className={`theme-toggle-icon-btn ${theme}`}
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            title={theme === 'light' ? 'Switch to Dark Mode / डार्क मोड' : 'Switch to Light Mode / लाइट मोड'}
+            aria-label={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+          >
+            {theme === 'light' ? (
+              <Moon size={18} className="theme-toggle-icon moon" />
+            ) : (
+              <Sun size={18} className="theme-toggle-icon sun" />
+            )}
+          </button>
         </div>
     </header>
 
