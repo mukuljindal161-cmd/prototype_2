@@ -51,18 +51,19 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
   };
 
   // Convert time to percentage on 24h axis (1440 mins)
-  const getSlotStyle = (startStr: string, endStr: string, isBlock: boolean = false) => {
+  const getSlotStyle = (startStr: string, endStr: string, _isBlock: boolean = false) => {
     const startMin = timeToMinutes(startStr);
     let endMin = timeToMinutes(endStr);
     if (endMin < startMin) endMin += 1440; // overnight handling
-    const duration = Math.max(isBlock ? 120 : 90, endMin - startMin);
+    const duration = Math.max(30, endMin - startMin); // at least 30 min so pill isn't a sliver
 
     const leftPercent = (startMin / 1440) * 100;
     const widthPercent = (duration / 1440) * 100;
 
     return {
       left: `${Math.max(0, Math.min(86, leftPercent))}%`,
-      width: `${Math.max(isBlock ? 11 : 9.5, Math.min(100 - leftPercent, widthPercent))}%`
+      width: `${Math.max(2, Math.min(100 - leftPercent, widthPercent))}%`
+      // CSS min-width:max-content will expand the pill further if content is wider than this
     };
   };
 

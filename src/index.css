@@ -1217,7 +1217,7 @@ table.occ-table tr:hover td {
 
 .lane-track-bed {
   flex: 1;
-  min-height: 48px;
+  min-height: 56px;
   position: relative;
   background: var(--lane-track-bed);
   overflow: visible;
@@ -1244,7 +1244,7 @@ table.occ-table tr:hover td {
   top: 6px;
   bottom: 6px;
   border-radius: 6px;
-  padding: 0 0.4rem;
+  padding: 0 0.55rem;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -1254,7 +1254,8 @@ table.occ-table tr:hover td {
   user-select: none;
   transition: all 0.15s ease;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
+  min-width: max-content;
   box-sizing: border-box;
   z-index: 10;
 }
