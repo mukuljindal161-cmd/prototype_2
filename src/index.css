@@ -1093,11 +1093,10 @@ table.occ-table tr:hover td {
   align-items: flex-start;
   gap: 0.5rem;
   font-size: 0.78rem;
-  background: var(--legend-bg);
-  padding: 0.55rem 0.9rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-subtle);
-  transition: background-color 0.25s ease;
+  background: transparent;
+  padding: 0.55rem 0.4rem;
+  border-radius: 0;
+  border: none;
 }
 
 .legend-item {
