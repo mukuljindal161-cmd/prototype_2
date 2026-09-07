@@ -778,32 +778,34 @@ input, select, textarea {
   border-color: #b91c1c !important;
 }
 
-/* Quick scenario buttons and timeline filter buttons as white buttons */
+/* Scenario + timeline filter buttons — underline style, no box */
 .occ-header-banner .nav-item,
 .timeline-header .nav-item {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 1px solid #d1d5db !important;
-  border-radius: 6px !important;
-  border-bottom: 1px solid #d1d5db !important;
-  padding: 0.35rem 0.75rem !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  border: none !important;
+  border-bottom: 2.5px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 0.4rem 0.65rem !important;
   font-weight: 500;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   cursor: pointer;
 }
 
 .occ-header-banner .nav-item.active,
 .timeline-header .nav-item.active {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 2px solid #000000 !important;
+  background: transparent !important;
+  color: var(--accent-cyan) !important;
+  border: none !important;
+  border-bottom: 2.5px solid var(--accent-cyan) !important;
   font-weight: 700 !important;
 }
 
 .occ-header-banner .nav-item:hover,
 .timeline-header .nav-item:hover {
-  background-color: #f3f4f6 !important;
-  border-color: #9ca3af !important;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  border-bottom: 2.5px solid rgba(22, 163, 74, 0.35) !important;
 }
 
 /* Global button styling guarantee: white background, black text */
