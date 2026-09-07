@@ -1267,13 +1267,13 @@ table.occ-table tr:hover td {
 
 /* Train Pill */
 .timeline-pill.train-pill {
-  background: #022c22;
+  background: rgba(2, 44, 34, 0.88);
   border: 1px solid #059669;
   color: #ecfdf5;
 }
 
 [data-theme="light"] .timeline-pill.train-pill {
-  background: #f0fdf4;
+  background: rgba(240, 253, 244, 0.88);
   border: 1px solid #bbf7d0;
   color: #15803d;
   font-weight: 600;
@@ -1285,13 +1285,13 @@ table.occ-table tr:hover td {
 
 /* Clear Block Pill */
 .timeline-pill.block-clear-pill {
-  background: #052e16;
+  background: rgba(5, 46, 22, 0.88);
   border: 1px solid #16a34a;
   color: #f0fdf4;
 }
 
 [data-theme="light"] .timeline-pill.block-clear-pill {
-  background: #f0fdf4;
+  background: rgba(240, 253, 244, 0.88);
   border: 1px solid #bbf7d0;
   color: #15803d;
   font-weight: 600;
@@ -1303,13 +1303,13 @@ table.occ-table tr:hover td {
 
 /* Conflict Block Pill */
 .timeline-pill.block-conflict-pill {
-  background: #450a0a;
+  background: rgba(69, 10, 10, 0.88);
   border: 1px solid #dc2626;
   color: #fef2f2;
 }
 
 [data-theme="light"] .timeline-pill.block-conflict-pill {
-  background: #fef2f2;
+  background: rgba(254, 242, 242, 0.88);
   border: 1px solid #fecaca;
   color: #b91c1c;
   font-weight: 600;
