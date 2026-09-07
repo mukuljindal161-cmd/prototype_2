@@ -35,7 +35,7 @@
   --status-purple-bg: rgba(139, 92, 246, 0.12);
   --status-purple-border: rgba(139, 92, 246, 0.35);
 
-  --nav-bg: rgba(255, 255, 255, 0.97);
+  --nav-bg: #14532d;
   --table-header-bg: #f2f8f3;
   --table-row-border: #e2ede3;
   --table-row-hover: #f1f9f2;
@@ -96,7 +96,7 @@
   --status-purple-bg: rgba(168, 85, 247, 0.14);
   --status-purple-border: rgba(168, 85, 247, 0.35);
 
-  --nav-bg: rgba(0, 0, 0, 0.96);
+  --nav-bg: #0f3d22;
   --table-header-bg: #090e0b;
   --table-row-border: rgba(255, 255, 255, 0.07);
   --table-row-hover: rgba(34, 197, 94, 0.04);
@@ -286,7 +286,7 @@ input, select, textarea {
   justify-content: space-between;
   padding: 0.65rem 1.5rem;
   background: var(--nav-bg);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -336,7 +336,7 @@ input, select, textarea {
   border-bottom: 2.5px solid transparent !important;
   font-size: 0.86rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.75);
   transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   flex-shrink: 0;
@@ -350,16 +350,16 @@ input, select, textarea {
 }
 
 .nav-item:hover {
-  color: var(--text-primary);
+  color: #ffffff;
   background: transparent !important;
-  border-bottom: 2.5px solid rgba(22, 163, 74, 0.35) !important;
+  border-bottom: 2.5px solid rgba(255, 255, 255, 0.4) !important;
 }
 
 .nav-item.active {
-  color: var(--accent-cyan) !important;
+  color: #ffffff !important;
   background: transparent !important;
   border: none !important;
-  border-bottom: 2.5px solid var(--accent-cyan) !important;
+  border-bottom: 2.5px solid #ffffff !important;
   font-weight: 700;
 }
 
@@ -469,7 +469,7 @@ input, select, textarea {
     border-radius: 0 !important;
     border: none !important;
     border-bottom: 3px solid transparent !important;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     background: transparent !important;
     transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s ease;
     min-width: 56px;
@@ -485,7 +485,7 @@ input, select, textarea {
   }
 
   .mobile-nav-item:hover {
-    color: var(--text-primary);
+    color: #ffffff;
     background: transparent !important;
   }
 
@@ -495,26 +495,26 @@ input, select, textarea {
 
   /* Underline only on mobile active section */
   .mobile-nav-item.active {
-    color: var(--accent-cyan) !important;
+    color: #ffffff !important;
     background: transparent !important;
     border: none !important;
-    border-bottom: 3px solid var(--accent-cyan) !important;
+    border-bottom: 3px solid #ffffff !important;
   }
 
   .mobile-nav-item.active svg {
-    color: var(--accent-cyan) !important;
+    color: #ffffff !important;
   }
 
   body[data-theme='light'] .mobile-bottom-nav {
-    background: #ffffff;
-    border-top: 1px solid #dbe8dc;
+    background: #14532d;
+    border-top: 1px solid rgba(0,0,0,0.2);
   }
 
   body[data-theme='light'] .mobile-nav-item.active {
-    color: var(--accent-cyan) !important;
+    color: #ffffff !important;
     background: transparent !important;
     border: none !important;
-    border-bottom: 3px solid var(--accent-cyan) !important;
+    border-bottom: 3px solid #ffffff !important;
   }
 
   /* Ensure page content never gets cut off by fixed bottom nav bar */
