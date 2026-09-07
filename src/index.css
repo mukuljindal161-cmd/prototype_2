@@ -315,7 +315,7 @@ input, select, textarea {
 }
 
 [data-theme="dark"] .brand-logo-img {
-  filter: brightness(1.25) contrast(1.1) drop-shadow(0 0 1px rgba(255, 255, 255, 0.45));
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.25));
 }
 
 .nav-links {

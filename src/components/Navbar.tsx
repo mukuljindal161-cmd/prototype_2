@@ -43,7 +43,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           style={{ cursor: 'pointer' }}
           title="RailOpt"
         >
-          <img src="/logo.png" alt="RailOpt Logo" className="brand-logo-img" />
+          <img
+            src={theme === 'dark' ? '/logo-dark.png' : '/logo.png'}
+            alt="RailOpt Logo"
+            className="brand-logo-img"
+          />
         </div>
 
         {/* Desktop Main Nav Tabs (hidden on mobile <= 768px) */}
