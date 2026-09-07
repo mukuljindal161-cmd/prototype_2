@@ -105,26 +105,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Controls: Language Switcher & Theme Toggle Bar */}
         <div className="nav-controls-right">
-          {/* Language Switcher Bar */}
-          <div className="lang-toggle-bar" title="Switch Language / भाषा बदलें">
-            <button
-              type="button"
-              className={`lang-toggle-btn ${language === 'en' ? 'active' : ''}`}
-              onClick={() => setLanguage('en')}
-              aria-label="English"
-            >
-              <Languages size={13} />
-              <span>EN</span>
-            </button>
-            <button
-              type="button"
-              className={`lang-toggle-btn ${language === 'hi' ? 'active' : ''}`}
-              onClick={() => setLanguage('hi')}
-              aria-label="Hindi"
-            >
-              <span>हिंदी</span>
-            </button>
-          </div>
+          {/* Single Language Toggle Icon Button */}
+          <button
+            type="button"
+            className="lang-toggle-icon-btn"
+            onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
+            title={language === 'en' ? 'हिंदी में बदलें / Switch to Hindi' : 'Switch to English / अंग्रेज़ी में बदलें'}
+            aria-label={language === 'en' ? 'Switch to Hindi' : 'Switch to English'}
+          >
+            <Languages size={18} className="lang-toggle-icon" />
+          </button>
 
           {/* Single Theme Toggle Icon Button */}
           <button

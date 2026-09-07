@@ -216,47 +216,58 @@ input, select, textarea {
   stroke: #fbbf24 !important;
 }
 
-/* Language Switcher Bar */
-.lang-toggle-bar {
-  display: flex;
+/* Single Language Toggle Icon Button */
+.lang-toggle-icon-btn {
+  display: inline-flex;
   align-items: center;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 9999px;
-  padding: 3px;
-  gap: 2px;
-}
-
-.lang-toggle-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.65rem;
-  border-radius: 9999px;
-  font-size: 0.74rem;
-  font-weight: 600;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 1px solid #d1d5db;
-  transition: all 0.15s ease;
-  white-space: nowrap;
+  color: #1e293b !important;
+  border: 1.5px solid #d1d5db !important;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.lang-toggle-btn svg {
-  color: #000000 !important;
-  stroke: #000000 !important;
+.lang-toggle-icon-btn:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  transform: translateY(-1px);
 }
 
-.lang-toggle-btn.active {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 1.5px solid #000000 !important;
-  font-weight: 700;
+.lang-toggle-icon-btn:active {
+  transform: translateY(1px);
 }
 
-.lang-toggle-btn:hover:not(.active) {
-  background-color: #f3f4f6 !important;
-  color: #000000 !important;
+.lang-toggle-icon-btn svg {
+  color: #1e293b !important;
+  stroke: #1e293b !important;
+  transition: transform 0.25s ease, stroke 0.2s ease, color 0.2s ease;
+}
+
+.lang-toggle-icon-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* In Dark Theme: Pure black background, subtle white border */
+[data-theme="dark"] .lang-toggle-icon-btn {
+  background-color: #000000 !important;
+  color: #f8fafc !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme="dark"] .lang-toggle-icon-btn:hover {
+  background-color: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-theme="dark"] .lang-toggle-icon-btn svg {
+  color: #f8fafc !important;
+  stroke: #f8fafc !important;
 }
 
 /* Panel Card */
@@ -540,11 +551,7 @@ input, select, textarea {
     height: 40px;
   }
 
-  .lang-toggle-btn {
-    padding: 0.25rem 0.45rem;
-    font-size: 0.72rem;
-  }
-
+  .lang-toggle-icon-btn,
   .theme-toggle-icon-btn {
     width: 32px;
     height: 32px;
@@ -587,15 +594,7 @@ input, select, textarea {
     gap: 0.25rem;
   }
 
-  .lang-toggle-btn {
-    padding: 0.2rem 0.35rem;
-    font-size: 0.68rem;
-  }
-
-  .lang-toggle-btn svg {
-    display: none;
-  }
-
+  .lang-toggle-icon-btn,
   .theme-toggle-icon-btn {
     width: 30px;
     height: 30px;
@@ -810,7 +809,6 @@ input, select, textarea {
 /* Global button styling guarantee: white background, black text */
 button.btn-primary,
 button.conflict-action-btn,
-button.lang-toggle-btn,
 button[type="submit"] {
   background-color: #ffffff !important;
   color: #000000 !important;
@@ -819,7 +817,6 @@ button[type="submit"] {
 
 button.btn-primary svg,
 button.conflict-action-btn svg,
-button.lang-toggle-btn svg,
 button[type="submit"] svg {
   color: #000000 !important;
   stroke: #000000 !important;
