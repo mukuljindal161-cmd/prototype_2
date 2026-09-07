@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           title="RailOpt"
         >
           <img
-            src={theme === 'dark' ? '/logo-dark.png' : '/logo.png'}
+            src="/logo-dark.png"
             alt="RailOpt Logo"
             className="brand-logo-img"
           />
