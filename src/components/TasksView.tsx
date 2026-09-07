@@ -156,8 +156,8 @@ export const TasksView: React.FC<TasksViewProps> = ({ tasks, onSelectTask }) => 
                         {tDept(task.department)}
                       </span>
                     </td>
-                    <td style={{ whiteSpace: 'nowrap', fontWeight: 500 }}>{tSection(task.section)}</td>
-                    <td style={{ minWidth: '240px', maxWidth: '340px' }}>
+                    <td style={{ fontWeight: 500, wordBreak: 'break-word', minWidth: '85px' }}>{tSection(task.section)}</td>
+                    <td style={{ maxWidth: '200px', wordBreak: 'break-word' }}>
                       <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{tTaskType(task.taskType)}</div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.4, marginTop: '0.2rem' }}>
                         {tTaskDesc(task.description)}
@@ -190,7 +190,7 @@ export const TasksView: React.FC<TasksViewProps> = ({ tasks, onSelectTask }) => 
                     <td style={{ whiteSpace: 'nowrap' }}>
                       <button
                         className="btn-primary"
-                        style={{ fontSize: '0.76rem', padding: '0.35rem 0.75rem', whiteSpace: 'nowrap' }}
+                        style={{ fontSize: '0.74rem', padding: '0.35rem 0.6rem', whiteSpace: 'nowrap' }}
                         onClick={() => onSelectTask(task)}
                       >
                         <Sparkles size={13} />

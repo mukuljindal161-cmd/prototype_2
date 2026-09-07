@@ -181,11 +181,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
             <div className="timeline-axis-header">
               {timeTicks.map((tick) => {
                 const leftPct = (tick.min / 1440) * 100;
+                const transformVal =
+                  tick.min === 0 ? 'translateX(0)' : tick.min === 1440 ? 'translateX(-100%)' : 'translateX(-50%)';
                 return (
                   <div
                     key={tick.label}
                     className="timeline-hour-tick"
-                    style={{ left: `${leftPct}%` }}
+                    style={{ left: `${leftPct}%`, transform: transformVal }}
                   >
                     {tick.label}
                   </div>
@@ -628,12 +630,12 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                       {entry.id}
                     </td>
                     <td style={{ fontWeight: 600, whiteSpace: 'nowrap' }}>{entry.blockId}</td>
-                    <td style={{ whiteSpace: 'nowrap', fontWeight: 500 }}>{tSection(entry.section)}</td>
+                    <td style={{ fontWeight: 500, wordBreak: 'break-word', minWidth: '90px' }}>{tSection(entry.section)}</td>
                     <td style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 500, whiteSpace: 'nowrap' }}>
                       {entry.startTime} – {entry.endTime}
                     </td>
                     <td>
-                      <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', whiteSpace: 'nowrap' }}>
+                      <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap' }}>
                         {entry.assignedTaskIds.map((tid) => (
                           <span key={tid} className="badge badge-low" style={{ whiteSpace: 'nowrap' }}>
                             {tid}
@@ -642,7 +644,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                       </div>
                     </td>
                     <td>
-                      <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', whiteSpace: 'nowrap' }}>
+                      <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap' }}>
                         {entry.departments.map((dept) => (
                           <span
                             key={dept}
@@ -662,7 +664,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                       </span>
                     </td>
                     <td style={{ whiteSpace: 'nowrap' }}>{getStatusBadge(entry.approvalStatus)}</td>
-                    <td style={{ minWidth: '240px', maxWidth: '360px', fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.45 }}>
+                    <td style={{ maxWidth: '200px', wordBreak: 'break-word', fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.35 }}>
                       {tNotes(entry.officerNotes)}
                     </td>
                     <td style={{ whiteSpace: 'nowrap' }}>
