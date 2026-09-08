@@ -226,12 +226,12 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
 
         {/* Right Column: Human Officer Review Gate */}
         <div>
-          <div className="glass-panel officer-review-gate-panel" style={{ padding: '1.5rem', background: '#ffffff', border: '1px solid #dbe8dc', color: '#122116' }}>
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#122116', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="glass-panel" style={{ padding: '1.5rem' }}>
+            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <TrendingUp size={18} color="#10b981" />
               <span>{t('recommendation.officerGateTitle')}</span>
             </h3>
-            <p style={{ fontSize: '0.78rem', color: '#3b5240', marginBottom: '1.25rem' }}>
+            <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
               {t('recommendation.officerGateDesc')}
             </p>
 
@@ -266,24 +266,24 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
             </div>
 
             {/* Task Info breakdown */}
-            <div style={{ borderTop: '1px solid #dbe8dc', paddingTop: '1rem' }}>
-              <h4 style={{ fontSize: '0.8rem', textTransform: 'uppercase', color: '#627766', marginBottom: '0.6rem' }}>
+            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem' }}>
+              <h4 style={{ fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.6rem' }}>
                 {t('recommendation.workOrdersTitle')}
               </h4>
               {recommendation.tasks?.map((tItem) => (
-                <div key={tItem.id} style={{ background: '#f3f9f4', border: '1px solid #dbe8dc', padding: '0.6rem', borderRadius: '6px', marginBottom: '0.5rem', fontSize: '0.78rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 600, color: '#122116' }}>
+                <div key={tItem.id} style={{ background: 'var(--bg-card-elevated)', border: '1px solid var(--border-subtle)', padding: '0.6rem', borderRadius: '6px', marginBottom: '0.5rem', fontSize: '0.78rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 600, color: 'var(--text-primary)' }}>
                     <span>{tItem.id}</span>
-                    <span style={{ color: '#3b5240' }}>{tItem.durationMinutes} {t('common.min')}</span>
+                    <span style={{ color: 'var(--text-secondary)' }}>{tItem.durationMinutes} {t('common.min')}</span>
                   </div>
-                  <div style={{ color: '#627766', marginTop: '0.2rem' }}>
+                  <div style={{ color: 'var(--text-muted)', marginTop: '0.2rem' }}>
                     {tDept(tItem.department)} • {tTaskType(tItem.taskType)}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div style={{ marginTop: '1rem', fontSize: '0.74rem', color: '#627766', lineHeight: 1.4 }}>
+            <div style={{ marginTop: '1rem', fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
               <span>{t('recommendation.approvalHelpNotice')}</span>
             </div>
           </div>
