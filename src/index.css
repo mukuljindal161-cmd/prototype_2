@@ -1923,46 +1923,54 @@ table.occ-table tr:hover td {
 
 .mobile-card-details {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.55rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem 1.1rem;
   background: var(--bg-card-elevated);
-  padding: 0.85rem;
+  padding: 0.85rem 1rem;
   border-radius: 8px;
   border: 1px solid var(--border-subtle);
   width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
-/* On wider screens (laptop/desktop), restore 2-column grid */
-@media (min-width: 769px) {
+/* On phones / narrow screens (<= 580px), stack into single column to prevent label/badge collision */
+@media (max-width: 580px) {
   .mobile-card-details {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem 0.85rem;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
   }
 }
 
 .mobile-detail-item {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
   min-width: 0;
 }
 
+.mobile-detail-notes {
+  grid-column: 1 / -1;
+}
+
 .detail-label {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text-muted);
   font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .detail-val {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   color: var(--text-primary);
   font-weight: 500;
+  line-height: 1.4;
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: normal;
   white-space: normal;
   min-width: 0;
 }
@@ -2101,9 +2109,9 @@ table.occ-table tr:hover td {
    Covers every phone width: 320px → 768px
    ======================================== */
 
-/* Prevent any horizontal overflow globally */
-*, *::before, *::after {
+img, video, canvas {
   max-width: 100%;
+  height: auto;
 }
 
 html, body {

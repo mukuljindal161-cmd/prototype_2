@@ -741,7 +741,7 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                     </div>
                   </div>
                   {entry.officerNotes && (
-                    <div className="mobile-detail-item" style={{ gridColumn: 'span 2' }}>
+                    <div className="mobile-detail-item mobile-detail-notes">
                       <span className="detail-label">{t('schedule.colOfficerNotes')}:</span>
                       <span className="detail-val" style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>{tNotes(entry.officerNotes)}</span>
                     </div>
