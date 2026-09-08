@@ -222,7 +222,7 @@ function AppContent() {
       )}
 
       {/* Main Screen Views */}
-      <main style={{ flex: 1 }}>
+      <main style={{ flex: 1, paddingTop: '70px' }}>
         {activeTab === 'dashboard' && (
           <DashboardView
             tasks={tasks}

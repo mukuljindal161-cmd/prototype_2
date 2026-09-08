@@ -287,9 +287,11 @@ input, select, textarea {
   padding: 0.65rem 1.5rem;
   background: var(--nav-bg);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  right: 0;
+  z-index: 100;
   transition: background-color 0.25s ease, border-color 0.25s ease;
   gap: 1rem;
 }
