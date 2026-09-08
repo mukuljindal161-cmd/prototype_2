@@ -1116,10 +1116,10 @@ table.occ-table tr:hover td {
 .timeline-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .timeline-legend {
@@ -1432,21 +1432,56 @@ table.occ-table tr:hover td {
 
 @media (max-width: 768px) {
   .timeline-container {
-    padding: 0.85rem !important;
+    padding: 0.75rem !important;
     border-radius: 10px;
+    overflow-x: hidden;
   }
 
   .timeline-header {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+  }
+
+  /* Title row — let it wrap fully */
+  .timeline-header > div:first-child {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .timeline-header > div:first-child h3 {
+    font-size: 0.9rem !important;
+    white-space: normal !important;
+    word-break: break-word;
+    line-height: 1.35;
+  }
+
+  /* Filter bar — scrollable on very narrow, wraps on wider mobile */
+  .timeline-header > div:last-child {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .timeline-header > div:last-child > div:first-child {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .timeline-header > div:last-child > div:first-child::-webkit-scrollbar {
+    display: none;
   }
 
   .timeline-legend {
-    gap: 0.4rem;
-    padding: 0.45rem 0.65rem;
-    font-size: 0.72rem;
+    gap: 0.35rem;
+    padding: 0.3rem 0;
+    font-size: 0.7rem;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .lane-label-box {
@@ -2050,4 +2085,116 @@ table.occ-table tr:hover td {
 
 .mobile-schedule-card .mobile-card-details {
   margin-top: 0.65rem;
+}
+
+/* ========================================
+   GLOBAL MOBILE RESPONSIVENESS OVERRIDES
+   Covers every phone width: 320px → 768px
+   ======================================== */
+
+/* Prevent any horizontal overflow globally */
+*, *::before, *::after {
+  max-width: 100%;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* All containers fit within viewport */
+.main-container {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* occ-header-banner: stack vertically on small screens */
+@media (max-width: 600px) {
+  .main-container {
+    padding: 1rem 0.75rem 2rem 0.75rem;
+  }
+
+  .occ-header-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .page-title {
+    font-size: 1.35rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .timeline-container {
+    padding: 0.65rem !important;
+  }
+
+  /* Filter bar buttons wrap and shrink */
+  .timeline-header > div:last-child > div:first-child {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .timeline-header > div:last-child > div:first-child .nav-item {
+    font-size: 0.68rem !important;
+    padding: 0.25rem 0.45rem !important;
+  }
+}
+
+/* Extra-small phones (≤ 400px: iPhone SE, Moto G, Galaxy A series narrow) */
+@media (max-width: 400px) {
+  .main-container {
+    padding: 0.75rem 0.55rem 2rem 0.55rem;
+  }
+
+  .occ-nav {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .page-title {
+    font-size: 1.2rem;
+  }
+
+  .timeline-container {
+    padding: 0.5rem !important;
+  }
+
+  .timeline-section-header {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .section-title-group {
+    min-width: 0;
+  }
+
+  .section-name {
+    font-size: 0.85rem !important;
+  }
+
+  .section-desc {
+    font-size: 0.72rem !important;
+  }
+}
+
+/* Smallest phones (≤ 360px: Galaxy S series small, Redmi narrow) */
+@media (max-width: 360px) {
+  .main-container {
+    padding: 0.6rem 0.4rem 2rem 0.4rem;
+  }
+
+  .page-title {
+    font-size: 1.1rem;
+  }
+
+  .btn-primary,
+  .btn-approve,
+  .btn-modify,
+  .btn-reject {
+    font-size: 0.78rem !important;
+    padding: 0.5rem 0.7rem !important;
+  }
 }
