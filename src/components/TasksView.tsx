@@ -1,8 +1,16 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Filter, Sparkles, AlertCircle } from 'lucide-react';
+import { Search, Filter, Sparkles, AlertCircle, MapPin } from 'lucide-react';
 import type { MaintenanceTask } from '../types';
 import { calculatePriorityScore } from '../engine/optimizer';
 import { useLanguage } from '../i18n/LanguageContext';
+
+const splitSection = (secStr: string) => {
+  const match = secStr.match(/^(.*?)\s*(\(.*?\))$/);
+  if (match) {
+    return { main: match[1], sub: match[2] };
+  }
+  return { main: secStr, sub: null };
+};
 
 interface TasksViewProps {
   tasks: MaintenanceTask[];
@@ -156,7 +164,17 @@ export const TasksView: React.FC<TasksViewProps> = ({ tasks, onSelectTask }) => 
                         {tDept(task.department)}
                       </span>
                     </td>
-                    <td style={{ fontWeight: 500, wordBreak: 'break-word', minWidth: '85px' }}>{tSection(task.section)}</td>
+                    <td style={{ fontWeight: 500, minWidth: '105px' }}>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.35rem' }}>
+                        <MapPin size={14} color="#10b981" style={{ marginTop: '3px', flexShrink: 0 }} />
+                        <div style={{ lineHeight: 1.3 }}>
+                          <div>{splitSection(tSection(task.section)).main}</div>
+                          {splitSection(tSection(task.section)).sub && (
+                            <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{splitSection(tSection(task.section)).sub}</div>
+                          )}
+                        </div>
+                      </div>
+                    </td>
                     <td style={{ maxWidth: '200px', wordBreak: 'break-word' }}>
                       <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{tTaskType(task.taskType)}</div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.4, marginTop: '0.2rem' }}>
@@ -231,8 +249,16 @@ export const TasksView: React.FC<TasksViewProps> = ({ tasks, onSelectTask }) => 
 
                 <div className="mobile-card-details">
                   <div className="mobile-detail-item">
-                    <span className="detail-label">{t('tasks.colSection')}:</span>
-                    <span className="detail-val">{tSection(task.section)}</span>
+                    <span className="detail-label">{t('recommendation.metricCorridor')}</span>
+                    <div className="detail-val" style={{ display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <MapPin size={15} color="#10b981" style={{ marginTop: '2px', flexShrink: 0 }} />
+                      <div style={{ fontWeight: 600, lineHeight: 1.35 }}>
+                        <div>{splitSection(tSection(task.section)).main}</div>
+                        {splitSection(tSection(task.section)).sub && (
+                          <div>{splitSection(tSection(task.section)).sub}</div>
+                        )}
+                      </div>
+                    </div>
                   </div>
                   <div className="mobile-detail-item">
                     <span className="detail-label">{t('tasks.colDuration')}:</span>

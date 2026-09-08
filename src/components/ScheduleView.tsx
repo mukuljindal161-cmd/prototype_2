@@ -13,6 +13,14 @@ import {
 import type { ScheduleEntry, AvailableBlock, Train } from '../types';
 import { useLanguage } from '../i18n/LanguageContext';
 
+const splitSection = (secStr: string) => {
+  const match = secStr.match(/^(.*?)\s*(\(.*?\))$/);
+  if (match) {
+    return { main: match[1], sub: match[2] };
+  }
+  return { main: secStr, sub: null };
+};
+
 interface ScheduleViewProps {
   schedule: ScheduleEntry[];
   blocks: AvailableBlock[];
@@ -631,7 +639,14 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
                       {entry.id}
                     </td>
                     <td style={{ fontWeight: 600, whiteSpace: 'nowrap' }}>{entry.blockId}</td>
-                    <td style={{ fontWeight: 500, wordBreak: 'break-word', minWidth: '90px' }}>{tSection(entry.section)}</td>
+                    <td style={{ fontWeight: 500, minWidth: '95px' }}>
+                      <div style={{ lineHeight: 1.3 }}>
+                        <div>{splitSection(tSection(entry.section)).main}</div>
+                        {splitSection(tSection(entry.section)).sub && (
+                          <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{splitSection(tSection(entry.section)).sub}</div>
+                        )}
+                      </div>
+                    </td>
                     <td style={{ fontVariantNumeric: 'tabular-nums', fontWeight: 500, whiteSpace: 'nowrap' }}>
                       {entry.startTime} – {entry.endTime}
                     </td>
@@ -709,8 +724,13 @@ export const ScheduleView: React.FC<ScheduleViewProps> = ({
 
                 <div className="mobile-card-details">
                   <div className="mobile-detail-item">
-                    <span className="detail-label">{t('schedule.colSection')}:</span>
-                    <span className="detail-val">{tSection(entry.section)}</span>
+                    <span className="detail-label">{t('schedule.colSection')}</span>
+                    <div className="detail-val" style={{ fontWeight: 600, lineHeight: 1.35 }}>
+                      <div>{splitSection(tSection(entry.section)).main}</div>
+                      {splitSection(tSection(entry.section)).sub && (
+                        <div>{splitSection(tSection(entry.section)).sub}</div>
+                      )}
+                    </div>
                   </div>
                   <div className="mobile-detail-item">
                     <span className="detail-label">{t('schedule.colPossessionWindow')}:</span>
