@@ -14,6 +14,14 @@ import {
 import type { Recommendation, MaintenanceTask, AvailableBlock } from '../types';
 import { useLanguage } from '../i18n/LanguageContext';
 
+const splitSection = (secStr: string) => {
+  const match = secStr.match(/^(.*?)\s*(\(.*?\))$/);
+  if (match) {
+    return { main: match[1], sub: match[2] };
+  }
+  return { main: secStr, sub: null };
+};
+
 interface RecommendationViewProps {
   recommendation: Recommendation | null;
   allRecommendations: Recommendation[];
@@ -149,9 +157,14 @@ export const RecommendationView: React.FC<RecommendationViewProps> = ({
 
               <div>
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600, letterSpacing: '0.04em' }}>{t('recommendation.metricCorridor')}</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.3rem' }}>
-                  <MapPin size={16} color="var(--accent-cyan)" />
-                  <span>{tSection(recommendation.section)}</span>
+                <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem', marginTop: '0.3rem' }}>
+                  <MapPin size={16} color="#10b981" style={{ marginTop: '3px', flexShrink: 0 }} />
+                  <div style={{ lineHeight: 1.3 }}>
+                    <div>{splitSection(tSection(recommendation.section)).main}</div>
+                    {splitSection(tSection(recommendation.section)).sub && (
+                      <div>{splitSection(tSection(recommendation.section)).sub}</div>
+                    )}
+                  </div>
                 </div>
               </div>
 
