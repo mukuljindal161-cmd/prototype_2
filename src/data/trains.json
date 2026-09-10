@@ -1,0 +1,47 @@
+[
+  {
+    "id": "TRN-201",
+    "trainNumber": "EXP-101",
+    "name": "Northern Rajdhani Link Express",
+    "trainType": "Superfast Express",
+    "section": "Section A-B",
+    "startTime": "06:30",
+    "endTime": "07:15"
+  },
+  {
+    "id": "TRN-202",
+    "trainNumber": "PAS-204",
+    "name": "Intercity Passenger",
+    "trainType": "Passenger",
+    "section": "Section A-B",
+    "startTime": "12:00",
+    "endTime": "12:50"
+  },
+  {
+    "id": "TRN-203",
+    "trainNumber": "EXP-305",
+    "name": "Corridor Superfast Express",
+    "trainType": "Superfast Express",
+    "section": "Section B-C",
+    "startTime": "14:30",
+    "endTime": "15:20"
+  },
+  {
+    "id": "TRN-204",
+    "trainNumber": "FRT-502",
+    "name": "Container Freight Rake",
+    "trainType": "Freight",
+    "section": "Section B-C",
+    "startTime": "17:00",
+    "endTime": "18:10"
+  },
+  {
+    "id": "TRN-205",
+    "trainNumber": "EXP-408",
+    "name": "Night Express",
+    "trainType": "Superfast Express",
+    "section": "Section A-B",
+    "startTime": "19:45",
+    "endTime": "20:30"
+  }
+]
