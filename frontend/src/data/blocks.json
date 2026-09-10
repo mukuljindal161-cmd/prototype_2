@@ -1,0 +1,52 @@
+[
+  {
+    "id": "BLK-301",
+    "section": "Section A-B",
+    "startTime": "09:00",
+    "endTime": "11:00",
+    "durationMinutes": 120,
+    "blockType": "Routine Maintenance Window",
+    "status": "Available",
+    "description": "Standard morning maintenance corridor between peak commuter services."
+  },
+  {
+    "id": "BLK-302",
+    "section": "Section A-B",
+    "startTime": "15:00",
+    "endTime": "17:00",
+    "durationMinutes": 120,
+    "blockType": "Shadow Block Window",
+    "status": "Available",
+    "description": "Mid-afternoon window suitable for joint Engineering and OHE multi-department operations."
+  },
+  {
+    "id": "BLK-303",
+    "section": "Section B-C",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "durationMinutes": 120,
+    "blockType": "Routine Maintenance Window",
+    "status": "Available",
+    "description": "Afternoon corridor on Section B-C. Notice: Scheduled timetable train passage in vicinity."
+  },
+  {
+    "id": "BLK-304",
+    "section": "Section B-C",
+    "startTime": "10:00",
+    "endTime": "12:30",
+    "durationMinutes": 150,
+    "blockType": "Heavy Track Window",
+    "status": "Available",
+    "description": "Clear morning slot between freight dispatch and midday passenger departures."
+  },
+  {
+    "id": "BLK-305",
+    "section": "Section A-B",
+    "startTime": "22:30",
+    "endTime": "01:30",
+    "durationMinutes": 180,
+    "blockType": "Night Traffic Window",
+    "status": "Available",
+    "description": "High-capacity night maintenance window with minimal passenger service impact."
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "SCH-401",
+    "blockId": "BLK-301",
+    "section": "Section A-B",
+    "startTime": "09:00",
+    "endTime": "11:00",
+    "assignedTaskIds": ["TSK-101", "TSK-102"],
+    "departments": ["Engineering", "OHE/Traction"],
+    "conflictStatus": "Clear",
+    "approvalStatus": "Pending Review",
+    "officerNotes": "Proposed joint track welding and catenary inspection under single coordinated block.",
+    "updatedAt": "2026-09-06T08:00:00Z"
+  }
+]
